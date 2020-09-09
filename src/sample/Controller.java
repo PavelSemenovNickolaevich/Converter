@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class Controller {
 
@@ -33,22 +34,19 @@ public class Controller {
     @FXML
     private Label output_gr;
 
-    private String strNum = "";
-
     private static final String ton = "Тонна";
     private static final String kilogram = "Килограмм";
     private static final String gram = "Грамм";
-    boolean isTon;
     float t = 0;
     float kg = 0;
     float gr = 0;
 
     @FXML
     void initialize() {
-//        Pattern p = Pattern.compile("(\\d+\\.?\\d*)?");
-//        text_field.textProperty().addListener((observable, oldValue, newValue) -> {
-//            if (!p.matcher(newValue).matches()) text_field.setText(oldValue);
-//        });
+        Pattern p = Pattern.compile("(\\d+\\.?\\d*)?");
+        text_field.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!p.matcher(newValue).matches()) text_field.setText(oldValue);
+        });
 
         choise_mass.getItems().add(ton);
         choise_mass.getItems().add(kilogram);
@@ -56,50 +54,31 @@ public class Controller {
         choise_mass.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                String input = text_field.getText();
+                float data = Float.parseFloat(input);
                 if (newValue.equals(ton)) {
-                    String input = text_field.getText();
-                    float data = Float.parseFloat(input);
-                    t = data;
-                    kg = data * 1000;
-                    gr = data * 1000000;
-                    output_ton.setText(Float.toString(t));
-                    output_kg.setText(Float.toString(kg));
-                    output_gr.setText(Float.toString(gr));
+                    calculateTon(data, data * 1000, data * 1000000);
+                    output();
                 } else if (newValue.equals(kilogram)) {
-                    String input = text_field.getText();
-                    float data = Float.parseFloat(input);
-                    t = data / 1000;
-                    kg = data;
-                    gr = data * 1000;
-                    output_ton.setText(Float.toString(t));
-                    output_kg.setText(Float.toString(kg));
-                    output_gr.setText(Float.toString(gr));
+                    calculateTon(data / 1000, data, data * 1000);
+                    output();
                 } else if (newValue.equals(gram)) {
-                    String input = text_field.getText();
-                    float data = Float.parseFloat(input);
-                    t = data / 1000000;
-                    kg = data / 1000;
-                    gr = data;
-                    output_ton.setText(Float.toString(t));
-                    output_kg.setText(Float.toString(kg));
-                    output_gr.setText(Float.toString(gr));
+                    calculateTon(data / 1000000, data / 1000, data);
+                    output();
                 }
             }
         });
     }
 
-//    private void convert() {
-//        String input = text_field.getText();
-//        float data = Float.parseFloat(input);
-//        float newTon = 0.0f;
-//        if(isTon) {
-//            newTon = data * 1000;
-//        }
-//        display(newTon);
-//
-//    }
-//
-//    private void display(float newTon) {
-//        System.out.println(newTon);
-//    }
+    private void calculateTon(float ton, float kg, float gr) {
+        this.t = ton;
+        this.kg = kg;
+        this.gr = gr;
+    }
+
+    private void output() {
+        output_ton.setText(Float.toString(t));
+        output_kg.setText(Float.toString(kg));
+        output_gr.setText(Float.toString(gr));
+    }
 }
