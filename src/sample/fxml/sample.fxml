@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="500.0" maxWidth="400.0" minHeight="500.0" minWidth="400.0" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #C0C0C0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <children>
+        <Label layoutX="186.0" layoutY="27.0" prefHeight="55.0" prefWidth="400.0" style="-fx-background-color: gray;" text="           Конвертер" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="445.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <font>
+                <Font name="System Bold" size="36.0" />
+            </font>
+        </Label>
+        <ChoiceBox fx:id="choise_mass" layoutX="24.0" layoutY="167.0" prefHeight="26.0" prefWidth="196.0" style="-fx-background-color: white;" />
+        <Pane layoutX="14.0" layoutY="229.0" prefHeight="270.0" prefWidth="398.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="229.0">
+            <children>
+                <Label fx:id="output_ton" layoutX="14.0" layoutY="49.0" prefHeight="37.0" prefWidth="367.0">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </Label>
+                <Label layoutX="14.0" layoutY="86.0" prefHeight="37.0" prefWidth="367.0" text="Значение в килограммах:">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                    <font>
+                        <Font name="Arial Bold" size="13.0" />
+                    </font>
+                </Label>
+                <Label layoutX="14.0" layoutY="12.0" prefHeight="37.0" prefWidth="367.0" text="Значение в тоннах:">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                    <font>
+                        <Font name="Arial Bold" size="13.0" />
+                    </font>
+                </Label>
+                <Label fx:id="output_kg" layoutX="14.0" layoutY="123.0" prefHeight="37.0" prefWidth="367.0">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </Label>
+                <Label layoutX="16.0" layoutY="160.0" prefHeight="37.0" prefWidth="367.0" text="Значение в граммах:">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                    <font>
+                        <Font name="Arial Bold" size="13.0" />
+                    </font>
+                </Label>
+                <Label fx:id="output_gr" layoutX="15.0" layoutY="197.0" prefHeight="37.0" prefWidth="367.0">
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </Label>
+            </children>
+        </Pane>
+      <TextField fx:id="text_field" layoutX="126.0" layoutY="95.0" style="-fx-background-color: gray; -fx-border-color: black;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="95.0">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </TextField>
+    </children>
+</AnchorPane>
